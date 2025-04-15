@@ -1,13 +1,85 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import 'primeng/resources/themes/lara-light-blue/theme.css';
-@import 'primeng/resources/primeng.css';
+/* Importy podstawowych stylów */
+@import '@angular/cdk/overlay-prebuilt.css';
+
+/* Importy bibliotek zewnętrznych */
+/* PrimeNG - tylko PrimeIcons importujemy z node_modules, reszta jest dodana poniżej jako style zastępcze */
 @import 'primeicons/primeicons.css';
 
+/* Import własnych stylów PrimeNG */
+@import './primeng-custom.scss';
+
+/* Usunięto importy FullCalendar, które powodowały błędy */
+/* Zamiast tego używamy już dostępnych stylów zastępczych poniżej */
+
+/* Własny motyw zamiast braku dostępu do PrimeNG Theme */
 :root {
   --font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol';
+  
+  /* Paleta kolorów */
+  --primary-color: #3B82F6;
+  --primary-color-lighter: #60a5fa;
+  --primary-color-darker: #2563eb;
+  --surface-ground: #f8f9fa;
+  --surface-card: #ffffff;
+  --surface-section: #ffffff;
+  --surface-overlay: #ffffff;
+  --surface-border: #dfe7ef;
+  --text-color: #495057;
+  --text-color-secondary: #6c757d;
+  
+  /* Komponenty */
+  --border-radius: 6px;
+  --input-bg: #ffffff;
+  --input-border: #ced4da;
+  --input-padding: 0.75rem;
+  --card-bg: var(--surface-card);
+  --card-border: var(--surface-border);
+  --button-bg: var(--primary-color);
+  --button-text: #ffffff;
+  --button-border: var(--primary-color);
+  --button-hover-bg: var(--primary-color-darker);
+}
+
+/* FullCalendar podstawowe style */
+.fc {
+  --fc-border-color: var(--surface-border);
+  --fc-button-bg-color: var(--primary-color);
+  --fc-button-border-color: var(--primary-color);
+  --fc-button-hover-bg-color: var(--primary-color-darker);
+  --fc-button-hover-border-color: var(--primary-color-darker);
+  --fc-button-active-bg-color: var(--primary-color-darker);
+  --fc-event-bg-color: var(--primary-color);
+  --fc-event-border-color: var(--primary-color);
+  --fc-today-bg-color: rgba(59, 130, 246, 0.1);
+  font-family: var(--font-family);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+}
+
+.fc-header-toolbar {
+  padding: 1rem;
+}
+
+.fc-view-harness {
+  padding: 0 1rem 1rem 1rem;
+}
+
+.fc-day {
+  border-radius: 0;
+}
+
+.fc-day-today {
+  background-color: var(--fc-today-bg-color) !important;
+}
+
+.fc-event {
+  padding: 3px;
+  border-radius: 4px;
 }
 
 body {
@@ -15,11 +87,74 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--surface-ground);
+  color: var(--text-color);
 }
 
-/* Add this to ensure PrimeNG styles are properly loaded */
-:root {
-  --font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol';
+/* Podstawowe style komponentów PrimeNG */
+.p-component {
+  font-family: var(--font-family);
+}
+
+.p-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.p-card-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--surface-border);
+  font-weight: 600;
+}
+
+.p-card-content {
+  padding: 1.5rem;
+}
+
+.p-button {
+  background: var(--button-bg);
+  border: 1px solid var(--button-border);
+  color: var(--button-text);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.p-button:hover {
+  background: var(--button-hover-bg);
+}
+
+.p-inputtext {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  padding: var(--input-padding);
+  border-radius: var(--border-radius);
+  width: 100%;
+}
+
+.p-inputgroup-addon {
+  background: var(--surface-section);
+  border: 1px solid var(--input-border);
+  padding: var(--input-padding);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  border-right: none;
+}
+
+/* Pomocnicze klasy */
+.p-4 {
+  padding: 1.5rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.gap-3 {
+  gap: 1rem;
 }
